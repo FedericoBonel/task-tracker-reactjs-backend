@@ -22,7 +22,8 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping()
+    @CrossOrigin
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Task> getAllTasks() {
         log.info("Getting all tasks");
@@ -30,6 +31,7 @@ public class TaskController {
         return taskService.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/{taskId}")
     @ResponseStatus(HttpStatus.OK)
     public Task getTaskById(@PathVariable Long taskId) {
@@ -38,6 +40,7 @@ public class TaskController {
         return taskService.findById(taskId);
     }
 
+    @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Task createTask(@Validated @RequestBody Task task) {
@@ -46,6 +49,7 @@ public class TaskController {
         return taskService.save(task);
     }
 
+    @CrossOrigin
     @PutMapping("/{taskId}")
     @ResponseStatus(HttpStatus.OK)
     public Task updateTask(@PathVariable Long taskId, @Validated @RequestBody Task task) {
@@ -54,6 +58,7 @@ public class TaskController {
         return taskService.updateById(taskId, task);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{taskId}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteTaskById(@PathVariable Long taskId) {
